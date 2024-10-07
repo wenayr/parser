@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    //"module": "CommonJS",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "sourceMap": true,
+    "allowJs": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strict": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "outDir": "./dist",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    //"skipLibCheck": true,
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "types" : ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "my_modules/*"
+      ]
+    }
+  },
+  "include": [
+    "./index.ts",
+    "global.d.ts"
+    //"_test2.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "references": [
+    { "path": "my_modules/node-binance-api_my", "prepend": true }
+  ]
+}
+
