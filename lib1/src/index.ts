@@ -191,8 +191,8 @@ async function createNewMethod(url: string, browser: Browser) {
         }
 
         const filePath = './src/methods/NewMethods2.ts';
-
-        let fileContent = fs.existsSync(filePath) ? fs.readFileSync(filePath, 'utf-8') : '';
+        if (!fs.existsSync(filePath)) fs.mkdirSync(filePath);
+        let fileContent = fs.readFileSync(filePath, 'utf-8')
 
         if (!fileContent.includes('class ApiMethods')) {
             fileContent = `class ApiMethods {\n}\n`;
@@ -283,7 +283,10 @@ async function processAllLinks() {
         for (const link of changelogLinks) {
             console.log(link)
             links = await getAllLinks(link, browser);
-            await Promise.all(links.map(link => createNewMethod(link, browser)));
+            for (let link of links) {
+                await createNewMethod(link, browser)
+            }
+            // await Promise.all(links.map(link => createNewMethod(link, browser)));
         }
     } catch (error) {
         console.error('Error in processAllLinks: ', error);
